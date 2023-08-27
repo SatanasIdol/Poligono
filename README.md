@@ -1,6 +1,7 @@
 # plantilla_vscode
 
 Plantilla para empezar a programar en JavaScript en [vs-code](https://code.visualstudio.com/).
+No olvide revisar también la plantilla [p5_vscode](https://github.com/objetos/p5_vscode).
 
 ## Pasos
 

@@ -21,7 +21,10 @@ cuadrado = {
     }
 }
 
+// https://www.w3schools.com/jsref/met_win_alert.asp
+alert('hello js template! Check you console');
+
 // 3. object usage
-console.log(cuadrado.position);
+console.log('cuadrado position: ' + cuadrado.position);
 cuadrado.randomize();
-console.log(cuadrado.position);
+console.log('cuadrado position: ' + cuadrado.position);
