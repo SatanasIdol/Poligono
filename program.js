@@ -1,18 +1,20 @@
 // 1. object declaration
-let cuadrado;
+let polygon;
 
 // 2. object initialization
-cuadrado = {
+polygon = {
     // 1. Data
     // position is defined in the cartesian plane
     // x and y should be between the (-100, 100) range
     position: [0, 0],
     // initial rotation in radians should be kepts as PI / 12 multiples
     rotation: 0,
-    // cuadrado edge size should
-    edge: 40,
+    // polygon edge size should
+    edge: 8,
     // color to fill the shape
     color: 'red',
+    // number of sides
+    n: 6,
 
     randomize: function () {
       this.position = [-100 + 200 * Math.random(), -100 + 200 * Math.random()];
@@ -25,6 +27,21 @@ cuadrado = {
 alert('hello js template! Check you console');
 
 // 3. object usage
-console.log('cuadrado position: ' + cuadrado.position);
-cuadrado.randomize();
-console.log('cuadrado position: ' + cuadrado.position);
+function calcApotema(){
+  edge = polygon.edge;
+  half = edge/2;
+  return Math.sqrt((edge*edge)-(half*half));
+}
+
+function calcPolyg(){
+  lados = polygon.n;
+  edge = polygon.edge;
+  perimetro = lados*edge;
+  area = (perimetro*calcApotema())/2;
+  return "Area: "+ area + ", Perimetro: "+ perimetro;
+}
+
+console.log('polygon position: ' + polygon.position);
+polygon.randomize();
+console.log('polygon position: ' + polygon.position);
+console.log(calcPolyg())
