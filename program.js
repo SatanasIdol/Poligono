@@ -11,15 +11,31 @@ polygon = {
     rotation: 0,
     // polygon edge size should
     edge: 32,
-    // color to fill the shape
-    color: 'red',
     // number of sides
     sides: 6,
+    // color to fill the shape
+    color: 'red',
 
     randomize: function () {
       this.position = [-100 + 200 * Math.random(), -100 + 200 * Math.random()];
       // implement the color and rotation parts of this function
       // remember the rotation should be kept as a PI / 12 multiple
+    },
+
+    get getter() {
+      return {"Posicion: ":this.position,
+             "Rotacion: ":this.rotation,
+             "Longitud: ":this.edge,
+             "Lados: ": this.sides,
+             "Color: ": this.color};
+    },
+
+    set setter(values){
+      this.position = values[0];
+      this.rotation = values[1];
+      this.edge = values[2];
+      this.sides = values[3];
+      this.color = values[4];
     }
 }
 
@@ -39,8 +55,12 @@ polygon.calcApotema = function(){
   return (this.edge/(2*(Math.tan(ang)))).toFixed(2);
 }
 
-console.log('polygon position: ' + polygon.position);
-polygon.randomize();
-console.log('polygon position: ' + polygon.position);
-console.log(polygon.caclPolyg())
+// console.log('polygon position: ' + polygon.position);
+// polygon.randomize();
+// console.log('polygon position: ' + polygon.position);
+polygon.setter = [[2,5],5,1,4,"green"];
+console.log(polygon.getter);
+console.log(polygon.caclPolyg());
+// console.log(Object.values(polygon));
+// Object.assign()
 // console.log(polygon.calcApotema())
