@@ -10,11 +10,11 @@ polygon = {
     // initial rotation in radians should be kepts as PI / 12 multiples
     rotation: 0,
     // polygon edge size should
-    edge: 1,
+    edge: 32,
     // color to fill the shape
     color: 'red',
     // number of sides
-    sides: 4,
+    sides: 6,
 
     randomize: function () {
       this.position = [-100 + 200 * Math.random(), -100 + 200 * Math.random()];
@@ -28,33 +28,19 @@ alert('hello js template! Check you console');
 
 // 3. object usage
 
-polygon.perimeter = function() {
-  return this.sides * this.edge;
+polygon.caclPolyg = function() {
+  perimetro = this.sides*this.edge;
+  area = (perimetro*polygon.calcApotema())/2;
+  return "Area: "+ area + " cm^2, Perimetro: "+ perimetro+" cm";
 }
 
-polygon.edge = 100;
-
-console.log(polygon.perimeter());
-
-  lados = polygon.sides;
-  edge = polygon.edge;
-
-function calcApotema(){
-  ang = 2 * Math.PI/(2*lados);
-  //rad = (ang*Math.PI)/180;
-  //grad = Math.tan();
-  // console.log(grad);
-  return (edge/(2*(Math.tan(ang))));
-}
-
-function calcPolyg(){
-  perimetro = lados*edge;
-  area = (perimetro*calcApotema())/2;
-  return "Area: "+ area + ", Perimetro: "+ perimetro;
+polygon.calcApotema = function(){
+  ang = (360/(2*this.sides))*(Math.PI/180);
+  return (this.edge/(2*(Math.tan(ang)))).toFixed(2);
 }
 
 console.log('polygon position: ' + polygon.position);
 polygon.randomize();
 console.log('polygon position: ' + polygon.position);
-console.log(calcApotema())
-console.log(calcPolyg())
+console.log(polygon.caclPolyg())
+// console.log(polygon.calcApotema())
