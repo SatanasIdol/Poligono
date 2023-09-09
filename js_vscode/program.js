@@ -1,8 +1,9 @@
 // 1. object declaration
-let polygon;
+
+// let polygon;
 
 // 2. object initialization
-polygon = {
+const polygon = {
     // 1. Data
     // position is defined in the cartesian plane
     // x and y should be between the (-100, 100) range
@@ -43,9 +44,10 @@ polygon = {
     ask : function() {
       alert("Hola, este es un programa para calcular el perimetro y el area de un Poligono Regular, a continuacion"+
             "digite los datos del poligono");
+      x=true;
       while(x==true){
         let text = prompt("Digite separados por una coma: la longitud y el numero de lados");
-        let val = text.split(",");
+        const val = text.split(",");
         (text != null && 
         (val[0] >= '0') && (val[0] <= '9') &&
         (val[1] >= '0') && (val[1] <= '9'))
@@ -78,7 +80,8 @@ polygon = {
 polygon.ask();
 console.log(polygon.getter);
 console.log(polygon.caclPolyg());
-// polygon.setter = [[2,5],5,2,5,"green"];
+polygon.setter = [[2,5],5,2,5,"green"];
+console.log(polygon.getter);
 
 // console.log(Object.values(polygon));
 // Object.assign()
