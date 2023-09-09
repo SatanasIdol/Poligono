@@ -10,9 +10,9 @@ polygon = {
     // initial rotation in radians should be kepts as PI / 12 multiples
     rotation: 0,
     // polygon edge size should
-    edge: 32,
+    edge: 0,
     // number of sides
-    sides: 6,
+    sides: 0,
     // color to fill the shape
     color: 'red',
 
@@ -22,6 +22,7 @@ polygon = {
       // remember the rotation should be kept as a PI / 12 multiple
     },
 
+    // getter accessor
     get getter() {
       return {"Posicion: ":this.position,
              "Rotacion: ":this.rotation,
@@ -30,37 +31,57 @@ polygon = {
              "Color: ": this.color};
     },
 
+    //setter accessor
     set setter(values){
       this.position = values[0];
       this.rotation = values[1];
       this.edge = values[2];
       this.sides = values[3];
       this.color = values[4];
+    },
+
+    ask : function() {
+      alert("Hola, este es un programa para calcular el perimetro y el area de un Poligono Regular, a continuacion"+
+            "digite los datos del poligono");
+      while(true){
+        let text = prompt("Digite separados por una coma: la longitud y el numero de lados");
+        let val = text.split(",");
+        if (text != null && 
+            (val[0] >= '0') && (val[0] <= '9') &&
+            (val[1] >= '0') && (val[1] <= '9')) {      
+          this.edge = parseInt(val[0]);
+          this.sides = parseInt(val[1]);
+          break;
+        } else alert("Porfavor digite un valor valido");
+      }
+      
+    },
+
+    caclPolyg : function() {
+      perimetro = this.sides*this.edge;
+      area = (perimetro*polygon.calcApotema())/2;
+      return "Area: "+ area + " cm^2, Perimetro: "+ perimetro+" cm";
+    },
+    
+    calcApotema : function(){
+      ang = (360/(2*this.sides))*(Math.PI/180);
+      return (this.edge/(2*(Math.tan(ang)))).toFixed(2);
     }
 }
 
 // https://www.w3schools.com/jsref/met_win_alert.asp
-alert('hello js template! Check you console');
 
 // 3. object usage
-
-polygon.caclPolyg = function() {
-  perimetro = this.sides*this.edge;
-  area = (perimetro*polygon.calcApotema())/2;
-  return "Area: "+ area + " cm^2, Perimetro: "+ perimetro+" cm";
-}
-
-polygon.calcApotema = function(){
-  ang = (360/(2*this.sides))*(Math.PI/180);
-  return (this.edge/(2*(Math.tan(ang)))).toFixed(2);
-}
 
 // console.log('polygon position: ' + polygon.position);
 // polygon.randomize();
 // console.log('polygon position: ' + polygon.position);
-polygon.setter = [[2,5],5,1,4,"green"];
+
+polygon.ask();
 console.log(polygon.getter);
 console.log(polygon.caclPolyg());
+// polygon.setter = [[2,5],5,2,5,"green"];
+
 // console.log(Object.values(polygon));
 // Object.assign()
 // console.log(polygon.calcApotema())
