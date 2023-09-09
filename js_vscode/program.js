@@ -42,7 +42,7 @@ const polygon = {
     },
 
     ask : function() {
-      alert("Hola, este es un programa para calcular el perimetro y el area de un Poligono Regular, a continuacion"+
+      alert("Hola, este es un programa para calcular el perimetro y el area de un Poligono Regular, a continuacion "+
             "digite los datos del poligono");
       x=true;
       while(x==true){
@@ -80,8 +80,8 @@ const polygon = {
 polygon.ask();
 console.log(polygon.getter);
 console.log(polygon.caclPolyg());
-polygon.setter = [[2,5],5,2,5,"green"];
-console.log(polygon.getter);
+// polygon.setter = [[2,5],5,2,5,"green"];
+// console.log(polygon.getter);
 
 // console.log(Object.values(polygon));
 // Object.assign()
