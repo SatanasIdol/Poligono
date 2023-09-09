@@ -43,16 +43,14 @@ polygon = {
     ask : function() {
       alert("Hola, este es un programa para calcular el perimetro y el area de un Poligono Regular, a continuacion"+
             "digite los datos del poligono");
-      while(true){
+      while(x==true){
         let text = prompt("Digite separados por una coma: la longitud y el numero de lados");
         let val = text.split(",");
-        if (text != null && 
-            (val[0] >= '0') && (val[0] <= '9') &&
-            (val[1] >= '0') && (val[1] <= '9')) {      
-          this.edge = parseInt(val[0]);
-          this.sides = parseInt(val[1]);
-          break;
-        } else alert("Porfavor digite un valor valido");
+        (text != null && 
+        (val[0] >= '0') && (val[0] <= '9') &&
+        (val[1] >= '0') && (val[1] <= '9'))
+        ? (this.edge = parseInt(val[0]),this.sides = parseInt(val[1]),x=false) 
+        : alert("Porfavor digite un valor valido");
       }
       
     },
