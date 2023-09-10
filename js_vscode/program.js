@@ -17,6 +17,7 @@ const polygon = {
     // color to fill the shape
     color: 'red',
 
+    // randomize the position
     randomize: function () {
       this.position = [-100 + 200 * Math.random(), -100 + 200 * Math.random()];
       // implement the color and rotation parts of this function
@@ -32,7 +33,7 @@ const polygon = {
              "Color: ": this.color};
     },
 
-    //setter accessor
+    // setter accessor
     set setter(values){
       this.position = values[0];
       this.rotation = values[1];
@@ -41,6 +42,7 @@ const polygon = {
       this.color = values[4];
     },
 
+    // pregunta por los datos y los valida
     ask : function() {
       alert("Hola, este es un programa para calcular el perimetro y el area de un Poligono Regular, a continuacion "+
             "digite los datos del poligono");
@@ -52,17 +54,19 @@ const polygon = {
         (val[0] >= '0') && (val[0] <= '9') &&
         (val[1] >= '0') && (val[1] <= '9'))
         ? (this.edge = parseInt(val[0]),this.sides = parseInt(val[1]),x=false) 
-        : alert("Porfavor digite un valor valido");
+        : alert("Porfavor digite un valor valido ");
       }
       
     },
 
+    // calcula el permietro y el area del poligono
     caclPolyg : function() {
       perimetro = this.sides*this.edge;
       area = (perimetro*polygon.calcApotema())/2;
       return "Area: "+ area + " cm^2, Perimetro: "+ perimetro+" cm";
     },
     
+    // calcula la apotema del poligono
     calcApotema : function(){
       ang = (360/(2*this.sides))*(Math.PI/180);
       return (this.edge/(2*(Math.tan(ang)))).toFixed(2);
